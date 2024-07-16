@@ -2,13 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: web-app-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-  # - host: edu.whitestack.com
-  - host: edu.minikube.com
+  - host: ad3d5dc160ebd42c297290afbb1a84a1-1577751184.us-east-1.elb.amazonaws.com
     http:
       paths:
       - path: /heavywork
