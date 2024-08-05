@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: docker.io/sclavijomorales/sc-app
+  tag: "latest"
+
+service:
+  port: 8080
+  metricsPort: 8000
+
+ingress:
+  enabled: true
+  host: mi-aplicacion.example.com
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+
+serviceAccount:
+  create: true
+  name: ""
+
+resources: {}

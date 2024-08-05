@@ -1,0 +1,14 @@
+prometheus:
+  url: http://prometheus-operated.monitoring.svc
+  port: 9090
+ 
+rules:
+   default: false
+   custom:
+   - seriesQuery: 'heavywork_requests_total'
+     resources:
+       template: <<.Resource>>
+     name:
+       matches: "heavywork_requests_total"
+       as: "heavywork_requests_total"
+     metricsQuery: sum(rate(<<.Series>>{<<.LabelMatchers>>}[1m])) by (<<.GroupBy>>)

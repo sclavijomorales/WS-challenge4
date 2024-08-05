@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-sc-{{ .Release.Name }}  # Nombre del Service con el sufijo del release
+  labels:
+    app: app-sc  # Etiqueta estática para el Service
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+    - name: metrics
+      port: {{ .Values.service.metricsPort }}
+      targetPort: {{ .Values.service.metricsPort }}
+  selector:
+    app: app-sc  # Etiqueta estática para el selector

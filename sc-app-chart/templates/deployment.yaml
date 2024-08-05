@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-sc-{{ .Release.Name }}  # Nombre del Deployment con el sufijo del release
+  labels:
+    app: app-sc  # Etiqueta estática para la aplicación
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: app-sc  # Etiqueta estática para el selector
+  template:
+    metadata:
+      labels:
+        app: app-sc  # Etiqueta estática para los pods
+    spec:
+      containers:
+        - name: app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+            - name: metrics
+              containerPort: {{ .Values.service.metricsPort }}
