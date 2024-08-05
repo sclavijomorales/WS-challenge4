@@ -2,6 +2,10 @@
 
 Se utilizo minikube como infra para realizar el challenge
 
+- Se habilito el addons de metrics-server
+- Se desplego [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus)
+
+
 ## Punto 1 - Adaptar la aplicación web
 
 **Clonar el repo del challenge**
@@ -227,7 +231,7 @@ spec:
 </details>
 
 ```bash
-kubectl apply -f hpa.yaml
+kubectl apply -f hpa-apps.yaml
 ```
 
 ## Punto 6 - Generar carga y analizar
