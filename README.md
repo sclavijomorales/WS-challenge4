@@ -131,7 +131,7 @@ helm install sc-app sc-app-chart-0.1.0.tgz --namespace apps
 
 ## Punto 3 - Crear ServiceMonitor para obtención de métricas
 
-</details>
+<details>
 
 <summary>service-monitor.yaml</summary>
 
